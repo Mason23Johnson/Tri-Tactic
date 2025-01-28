@@ -12,3 +12,4 @@ F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe
 F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.pdb
 F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.genruntimeconfig.cache
 F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\ref\InfiniteTicTacToe.dll
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.sourcelink.json

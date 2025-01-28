@@ -1,0 +1,2 @@
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Release\net8.0\win-x64\publish\InfiniteTicTacToe.pdb
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Release\net8.0\win-x64\publish\InfiniteTicTacToe.exe

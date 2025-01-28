@@ -4,22 +4,24 @@ using System.Threading;
 
 class Program
 {
-    // We track which positions are occupied by X or O in a 9-element array:
-    // " " means empty, "X" or "O" means occupied.
+    // We track the occupant of each of the 9 board positions: " " (empty), "X", or "O"
     static string[] boardState = new string[9];
 
-    // We track the positions each player has placed *in the order they were placed*.
-    // The front of each list is the oldest piece, the back is the newest.
+    // We track X's placed positions (0-based) in the order they were placed
     static List<int> xPositions = new List<int>();
+
+    // We track O's placed positions (0-based) in the order they were placed
     static List<int> oPositions = new List<int>();
 
     static void Main()
     {
+        ShowWelcomeMessage(); // Display the welcome and rule explanation
+
         while (true)
         {
             PlayGame();
 
-            // Prompt for replay
+            // Ask if the user wants to play again
             Console.WriteLine("Would you like to play again? (y/n):");
             string response;
             while (true)
@@ -36,16 +38,29 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Displays a welcome message and explains the rules of 3-Piece Tic-Tac-Toe.
+    /// </summary>
+    static void ShowWelcomeMessage()
+    {
+        Console.WriteLine("Welcome to Mason's Tri-Tactic!");
+		Console.WriteLine("An infinite and tactical version of Tic-Tac-Toe with only 3 pieces at a time.\n");
+        Console.WriteLine("\t3 Pieces, 3 Rules:");
+        Console.WriteLine("1) X always goes first.");
+        Console.WriteLine("2) Each player can have only 3 pieces on the board at once.");
+        Console.WriteLine("   - If you place a 4th piece, your oldest piece will be removed.");
+        Console.WriteLine("3) The board never fills up, so the game continues until someone lines up 3 in a row!\n");
+    }
+
     static void PlayGame()
     {
-        // Reset all per-game data
+        // Reset all game-specific data
         for (int i = 0; i < boardState.Length; i++)
-            boardState[i] = " ";          // all spots empty
+            boardState[i] = " "; // Make all spots empty again
         xPositions.Clear();
         oPositions.Clear();
 
-        // Visual board with numbers 1..9
-        // We'll overwrite these spots with X/O as we go.
+        // Create our 2D board display with positions labeled 1..9
         string[,] displayBoard = new string[,]
         {
             { " 1 ", "|", " 2 ", "|", " 3 " },
@@ -55,7 +70,7 @@ class Program
             { " 7 ", "|", " 8 ", "|", " 9 " }
         };
 
-        // Prompt: choose X or O
+        // Let the user pick whether to play as X or O
         Console.WriteLine("Do you want to play as X or O? (Enter X or O):");
         string player;
         while (true)
@@ -65,19 +80,18 @@ class Program
             Console.WriteLine("Invalid choice. Please enter X or O:");
         }
 
-        // Computer gets the other
+        // The computer gets whichever symbol the player didn't choose
         string computer = (player == "X") ? "O" : "X";
         Console.WriteLine($"You are {player}. The computer is {computer}.");
         Console.WriteLine("Press Enter to start the game.");
         Console.ReadLine();
 
-        // Show initial board
+        // Display the initial board
         PrintBoard(displayBoard);
 
-        // X always goes first in this setup
+        // X always starts
         string currentPlayer = "X";
 
-        // Keep going until there's a winner
         while (true)
         {
             if (currentPlayer == player)
@@ -87,15 +101,14 @@ class Program
                 int position;
                 while (true)
                 {
-                    // Validate input is an integer in [1..9]
+                    // Make sure the user enters a valid number
                     if (int.TryParse(Console.ReadLine(), out position) &&
                         position >= 1 && position <= 9)
                     {
                         int index = position - 1;
-                        // Check if it's free
+                        // Spot must be free
                         if (boardState[index] == " ")
                         {
-                            // Place the piece
                             PlacePiece(index, currentPlayer, displayBoard);
                             break;
                         }
@@ -107,15 +120,15 @@ class Program
             {
                 // Computer's turn
                 Console.WriteLine("Computer's turn...");
-                Thread.Sleep(1000); // small delay for realism
-                int compIndex = GetComputerMove(currentPlayer, (player == "X" ? "X" : "O"));
+                Thread.Sleep(1000); // 1-second delay for realism
+                int compIndex = GetComputerMove(currentPlayer, player);
                 PlacePiece(compIndex, currentPlayer, displayBoard);
             }
 
             // Show updated board
             PrintBoard(displayBoard);
 
-            // Check if there's a winner
+            // Check for winner
             string winner = CheckWinner();
             if (winner != null)
             {
@@ -123,48 +136,42 @@ class Program
                 break;
             }
 
-            // Switch players
+            // Switch player
             currentPlayer = (currentPlayer == "X") ? "O" : "X";
         }
     }
 
     /// <summary>
-    /// Places a piece for the current player.
-    /// If that player already has 3 pieces, remove their oldest first.
+    /// Places a piece for the given player. If that player already has 3 pieces,
+    /// remove the oldest one first.
     /// </summary>
     static void PlacePiece(int index, string symbol, string[,] displayBoard)
     {
-        // If it's X's turn
+        // If X's turn
         if (symbol == "X")
         {
-            // If X already has 3 positions, remove the oldest
             if (xPositions.Count == 3)
             {
                 int oldestIndex = xPositions[0];
                 xPositions.RemoveAt(0);
-                // Clear from boardState
+                // Clear that spot in boardState
                 boardState[oldestIndex] = " ";
-                // Reset the display to its original number
+                // Restore the original numbered display
                 ClearDisplaySpot(oldestIndex, displayBoard);
             }
-            // Add the new position
             xPositions.Add(index);
             boardState[index] = "X";
             OverwriteDisplaySpot(index, symbol, displayBoard);
         }
-        else // It's O's turn
+        else // O's turn
         {
-            // If O already has 3 positions, remove the oldest
             if (oPositions.Count == 3)
             {
                 int oldestIndex = oPositions[0];
                 oPositions.RemoveAt(0);
-                // Clear from boardState
                 boardState[oldestIndex] = " ";
-                // Reset the display to its original number
                 ClearDisplaySpot(oldestIndex, displayBoard);
             }
-            // Add the new position
             oPositions.Add(index);
             boardState[index] = "O";
             OverwriteDisplaySpot(index, symbol, displayBoard);
@@ -172,20 +179,17 @@ class Program
     }
 
     /// <summary>
-    /// Clears the board's display spot (overwrites it with the original number).
+    /// Resets the display position with its original number (index+1).
     /// </summary>
     static void ClearDisplaySpot(int index, string[,] displayBoard)
     {
-        // Convert 0..8 => row,col in the 2D display
-        int row = (index / 3) * 2;  // 0->0,1->0,2->0,3->2,4->2,5->2,6->4,7->4,8->4
-        int col = (index % 3) * 2;  // 0->0,1->2,2->4
-
-        // Original number was index+1
+        int row = (index / 3) * 2; // 0->0,1->0,2->0,3->2,etc.
+        int col = (index % 3) * 2; // 0->0,1->2,2->4
         displayBoard[row, col] = $" {index + 1} ";
     }
 
     /// <summary>
-    /// Places the symbol (X or O) in the display board.
+    /// Overwrites the display position with X or O.
     /// </summary>
     static void OverwriteDisplaySpot(int index, string symbol, string[,] displayBoard)
     {
@@ -195,27 +199,24 @@ class Program
     }
 
     /// <summary>
-    /// Computer tries to find a winning move, then a blocking move, then random.
+    /// The computer checks for a winning move, then a blocking move, otherwise picks randomly.
     /// </summary>
     static int GetComputerMove(string computerSym, string playerSym)
     {
-        // 1) Try winning
+        // 1) Try to win
         for (int i = 0; i < 9; i++)
         {
             if (boardState[i] == " ")
             {
-                // Temporarily place
                 boardState[i] = computerSym;
-                // Also track it in oPositions or xPositions if needed to check winner
                 if (computerSym == "X")
                 {
                     xPositions.Add(i);
                     if (CheckWinner() == "X")
                     {
-                        // revert
                         xPositions.Remove(i);
                         boardState[i] = " ";
-                        return i; // found winning spot
+                        return i; // Winning move
                     }
                     xPositions.Remove(i);
                 }
@@ -226,21 +227,19 @@ class Program
                     {
                         oPositions.Remove(i);
                         boardState[i] = " ";
-                        return i; // found winning spot
+                        return i; // Winning move
                     }
                     oPositions.Remove(i);
                 }
-                // revert
                 boardState[i] = " ";
             }
         }
 
-        // 2) Try blocking
+        // 2) Try to block
         for (int i = 0; i < 9; i++)
         {
             if (boardState[i] == " ")
             {
-                // Temporarily place
                 boardState[i] = playerSym;
                 if (playerSym == "X")
                 {
@@ -249,7 +248,7 @@ class Program
                     {
                         xPositions.Remove(i);
                         boardState[i] = " ";
-                        return i; // block
+                        return i; // Blocking move
                     }
                     xPositions.Remove(i);
                 }
@@ -260,11 +259,10 @@ class Program
                     {
                         oPositions.Remove(i);
                         boardState[i] = " ";
-                        return i; // block
+                        return i; // Blocking move
                     }
                     oPositions.Remove(i);
                 }
-                // revert
                 boardState[i] = " ";
             }
         }
@@ -296,13 +294,9 @@ class Program
     }
 
     /// <summary>
-    /// Checks if X or O has formed a 3-in-a-row among the current boardState.
-    /// Returns "X", "O", or null if no winner. 
-    /// 
-    /// Since each player can keep removing the oldest piece,
-    /// there's technically no "tie" by board fill, 
-    /// so if we wanted a "T" for tie, we'd need a different logic. 
-    /// We'll just return null if no one has 3 in a row.
+    /// Checks the boardState for a winner (3 in a row).
+    /// Returns "X", "O", or null if no winner.
+    /// We do not track ties since the board never fully fills.
     /// </summary>
     static string CheckWinner()
     {
@@ -313,7 +307,6 @@ class Program
             {0,4,8}, {2,4,6}
         };
 
-        // Check each combo
         for (int i = 0; i < combos.GetLength(0); i++)
         {
             int a = combos[i,0];
@@ -327,7 +320,7 @@ class Program
             }
         }
 
-        // No winner
+        // No winner yet
         return null;
     }
 }
