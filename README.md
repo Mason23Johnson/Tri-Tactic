@@ -13,7 +13,7 @@ Standard Tic Tac Toe quickly ends in a tie with moderate skill.
 By limiting each player to just 3 pieces, the board is never fully “clogged,” so the match continues indefinitely until a line of 3 is formed.
 
   **How to download?**
-In the folder where you opened this README.md, click the TriTactic.exe, select the green button <code> and download the .exe file to your computer.
+In the folder where you opened this README.md, click the TriTactic.exe and download the .exe file to your computer.
 Open the .exe file and continue to play the game.
   - If prompted the program is not safe, select 'More Info' and 'Run Anyway'
 
