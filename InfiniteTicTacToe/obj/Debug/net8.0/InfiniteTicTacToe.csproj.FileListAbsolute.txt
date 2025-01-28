@@ -1,0 +1,14 @@
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Debug\net8.0\InfiniteTicTacToe.exe
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Debug\net8.0\InfiniteTicTacToe.deps.json
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Debug\net8.0\InfiniteTicTacToe.runtimeconfig.json
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Debug\net8.0\InfiniteTicTacToe.dll
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\bin\Debug\net8.0\InfiniteTicTacToe.pdb
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.AssemblyInfoInputs.cache
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.AssemblyInfo.cs
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.csproj.CoreCompileInputs.cache
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.dll
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\refint\InfiniteTicTacToe.dll
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.pdb
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\InfiniteTicTacToe.genruntimeconfig.cache
+F:\Programming\MasonJohnsonPortfolioProjects\InfiniteTicTacToe\InfiniteTicTacToe\obj\Debug\net8.0\ref\InfiniteTicTacToe.dll
