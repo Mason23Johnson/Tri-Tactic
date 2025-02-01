@@ -33,4 +33,4 @@ Otherwise, places a piece randomly in an available spot.
 }
 
 License: This project is licensed under the [MIT License](LICENSE).
-	More info in LICENSE.txt can be found in the TriTactic folder.
+	More info in License.txt can be found in the TriTactic folder.
