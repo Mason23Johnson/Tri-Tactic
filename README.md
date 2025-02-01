@@ -32,5 +32,5 @@ If not, tries to block the player’s winning move.
 Otherwise, places a piece randomly in an available spot.
 }
 
-License: This project is licensed under the [MIT License](License).
+License: This project is licensed under the [MIT License](License.txt).
 	More info in License.txt can be found in the TriTactic folder.
