@@ -31,3 +31,6 @@ Checks if it can win immediately.
 If not, tries to block the player’s winning move.
 Otherwise, places a piece randomly in an available spot.
 }
+
+Licensing:
+MIL
