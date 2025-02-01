@@ -15,6 +15,7 @@ By limiting each player to just 3 pieces, the board is never fully â€œclogged,â€
   **How to download?**
 Click the google drive link listed below and download the zip. Extract the zip file and launch the .exe file to play the game.
 If prompted the program is not safe, select 'More Info' and 'Run Anyway'.
+https://drive.google.com/file/d/1DTeYMSAx75Qn2SaUkpVRdxGlnzMK_1aD/view?usp=drive_link
 
 **Engineering Domain{**
   Board Representation:
