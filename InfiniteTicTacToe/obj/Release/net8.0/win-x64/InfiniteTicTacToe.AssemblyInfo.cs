@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InfiniteTicTacToe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+040a9850c55fe78cbe6c91d661651af27e11499c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+916f9ada143171368186bcc9915923f13a701f18")]
 [assembly: System.Reflection.AssemblyProductAttribute("InfiniteTicTacToe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InfiniteTicTacToe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
