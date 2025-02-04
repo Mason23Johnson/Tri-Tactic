@@ -23,7 +23,7 @@ class Program
 
             // Ask if the user wants to play again
             Console.WriteLine("Would you like to play again? (y/n):");
-            string response;
+            string? response;
             while (true)
             {
                 response = Console.ReadLine()?.ToLower();
@@ -38,9 +38,7 @@ class Program
         }
     }
 
-    /// <summary>
     /// Displays a welcome message and explains the rules of 3-Piece Tic-Tac-Toe.
-    /// </summary>
     static void ShowWelcomeMessage()
     {
         Console.WriteLine("Welcome to Mason's Tri-Tactic!");
@@ -72,7 +70,7 @@ class Program
 
         // Let the user pick whether to play as X or O
         Console.WriteLine("Do you want to play as X or O? (Enter X or O):");
-        string player;
+        string? player;
         while (true)
         {
             player = Console.ReadLine()?.ToUpper();
@@ -129,7 +127,7 @@ class Program
             PrintBoard(displayBoard);
 
             // Check for winner
-            string winner = CheckWinner();
+            string? winner = CheckWinner();
             if (winner != null)
             {
                 Console.WriteLine(winner == "T" ? "It's a tie!" : $"{winner} wins!");
@@ -141,10 +139,8 @@ class Program
         }
     }
 
-    /// <summary>
-    /// Places a piece for the given player. If that player already has 3 pieces,
-    /// remove the oldest one first.
-    /// </summary>
+    // Places a piece for the given player. If that player already has 3 pieces,
+    // remove the oldest one first.
     static void PlacePiece(int index, string symbol, string[,] displayBoard)
     {
         // If X's turn
@@ -178,19 +174,21 @@ class Program
         }
     }
 
-    /// <summary>
-    /// Resets the display position with its original number (index+1).
-    /// </summary>
-    static void ClearDisplaySpot(int index, string[,] displayBoard)
-    {
-        int row = (index / 3) * 2; // 0->0,1->0,2->0,3->2,etc.
-        int col = (index % 3) * 2; // 0->0,1->2,2->4
-        displayBoard[row, col] = $" {index + 1} ";
-    }
+ // Resets a board spot back to its original number (1-9)
+static void ClearDisplaySpot(int index, string[,] displayBoard)
+{
+    // Find the correct row (each row is spaced out by 2 due to separators)
+    int row = (index / 3) * 2;
 
-    /// <summary>
-    /// Overwrites the display position with X or O.
-    /// </summary>
+    // Find the correct column (each column is spaced out by 2 due to separators)
+    int col = (index % 3) * 2;
+
+    // Restore the number that was originally in this spot
+    displayBoard[row, col] = $" {index + 1} ";
+}
+
+
+    // Overwrites the display position with X or O using similar, previous method's logic.
     static void OverwriteDisplaySpot(int index, string symbol, string[,] displayBoard)
     {
         int row = (index / 3) * 2;
@@ -198,9 +196,7 @@ class Program
         displayBoard[row, col] = $" {symbol} ";
     }
 
-    /// <summary>
-    /// The computer checks for a winning move, then a blocking move, otherwise picks randomly.
-    /// </summary>
+    // The computer checks for a winning move, then a blocking move, otherwise picks randomly.
     static int GetComputerMove(string computerSym, string playerSym)
     {
         // 1) Try to win
@@ -277,9 +273,7 @@ class Program
         return move;
     }
 
-    /// <summary>
-    /// Prints the current 2D display board.
-    /// </summary>
+    // Prints the current 2D display board.
     static void PrintBoard(string[,] displayBoard)
     {
         Console.Clear();
@@ -293,12 +287,10 @@ class Program
         }
     }
 
-    /// <summary>
-    /// Checks the boardState for a winner (3 in a row).
-    /// Returns "X", "O", or null if no winner.
-    /// We do not track ties since the board never fully fills.
-    /// </summary>
-    static string CheckWinner()
+    // Checks the boardState for a winner (3 in a row).
+    // Returns "X", "O", or null if no winner.
+    // We do not track ties since the board never fully fills.
+    static string? CheckWinner()
     {
         int[,] combos = new int[,]
         {
