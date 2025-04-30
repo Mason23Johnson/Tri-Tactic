@@ -1,7 +1,7 @@
 Tri-Tactic is a console-based Tic Tac Toe variant built with C#. 
 Each player can only have three pieces on the board at once. Placing a fourth piece automatically removes that player’s oldest piece, creating an infinite game until someone wins!
 
-Play at moosharp.dev/games/tri-tactic
+Play at https://moosharp.dev/games/tri-tactic
 
 An infinite and tactical version of Tic-Tac-Toe with only 3 pieces at a time.
       3 Pieces, 3 Rules:
